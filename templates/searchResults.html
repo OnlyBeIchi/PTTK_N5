@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+    {% extends "base.html" %}
+    <title>{% block title %}Kết quả tìm kiếm{% endblock %}</title>
+    {% block page_content %}
+    <div class="col-md-12">
+        <hr>    
+        <div class="page-header text-center mt-3">
+            <h1 class="display-4">Kết quả tìm kiếm</h1>
+            <h6>{{ query }}</h6>
+        </div>
+        <hr>
+        
+        {% for doubt in doubts %}
+        <div class="card border-dark bg-light mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'doubt_complete' doubt.pk%}" class="text-dark">{{ doubt.title }}</a></h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {{ doubt.created_on.date }} |&nbsp; {{ doubt.author }} </h6>
+                    Môn:&nbsp;
+                    <a href="{% url 'tagged_doubts' doubt.subject.name %}">
+                        {{ doubt.subject.name }}
+                    </a>&nbsp;
+                
+                <p class="card-text">{{ doubt.body | slice:":400" }}...</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}

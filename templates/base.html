@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <title>{% block title %}Daily Mission Assistance</title>{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #563d7c;">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">Daily Mission Assistance</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'home' %}">Trang chủ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'subject_list' %}">Môn học</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'search_doubt' %}">Tìm kiếm</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'add_doubt' %}">Đăng bài</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'doubt_sessions' %}">Lịch</a>
+              </li>
+              <li>
+                {% if user.is_authenticated %}
+                <a class="nav-link active" href="{% url 'user_doubts' %}">Bài đăng</a>
+                {% endif %}
+              </li>
+              <li>
+                {% if user.is_authenticated and user.is_staff%}
+                <a class="nav-link waves-effect waves-light active" href="/admin/"> 
+                  <i class="bi bi-person-circle"></i> Khoa
+                </a>
+                {% endif %}
+              </li>
+              <li>
+                {% if user.is_authenticated %}
+                <a class="nav-link active" href="{% url 'logout' %}">Đăng xuất</a>
+                {% else %}
+                <a class="nav-link active" href="{% url 'login' %}">Đăng nhập</a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+      </div>
+
+  </nav>
+
+  <div class="container-fluid">
+      {% block page_content %}{% endblock %}
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

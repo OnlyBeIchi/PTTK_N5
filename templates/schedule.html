@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+{% extends "base.html" %}
+<title>{% block title %}Schedule{% endblock %}</title>
+{% block page_content %}
+<div class="col-md-12">
+    <hr>    
+        <div class="page-header text-center mt-3">
+            <h1 class="display-4">Lịch trình</h1>
+        </div>
+    <hr>
+    {% for session in sessions %}
+    <div class="card border-dark bg-light mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ session.subject }} - {{ session.professor }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                thời gian phiên: {{ session.scheduled_for }}&nbsp;  </h6>
+            <p class="card-text">{{ session.body }}</p>
+            {% if session.link_to_session is null or blank%}
+            {% else %}
+                <a href="{{session.link_to_session}}" class="card-link text-info">Link.</a>&nbsp;
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

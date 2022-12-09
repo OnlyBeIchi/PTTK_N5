@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+    {% extends "base.html" %}
+    <title>{% block title %}Home{% endblock %}</title>
+    {% block page_content %}
+    <div
+          class="p-5 m-1 text-center bg-image border border-secondary border-5"
+          style="
+          background-image: url('https://i.ibb.co/0mg2VFd/imageonline-co-overlayed-image-6.png');
+          height: 250;
+          background-repeat: no-repeat;
+          background-size: cover;
+        "
+  >
+    <div class="mask">  
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+            <h1 class="mb-3">Bàn luận</h1>
+            <h4 class="mb-3">Câu hỏi và thảo luận vấn đề</h4>
+            <a class="btn btn-dark" href="{% url 'add_doubt' %}" role="button">Đăng bài</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-md-12">
+        {% for doubt in doubts %}
+        <div class="card border-dark bg-light my-3">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'doubt_complete' doubt.pk%}" class="text-dark">{{ doubt.title }}</a></h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {{ doubt.created_on.date }} |&nbsp; {{ doubt.author }} </h6>
+                    Môn:&nbsp;
+                    <a href="{% url 'tagged_doubts' doubt.subject.name %}">
+                      {{ doubt.subject.name }}
+                    </a>&nbsp;
+                
+                <p class="card-text">{{ doubt.body | slice:":400" }}...</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
