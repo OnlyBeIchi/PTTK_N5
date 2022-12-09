@@ -4,7 +4,7 @@ django ==3.2.9
 
 Cách chạy:
 
-git clone [https://github.com/SriAish/WebApp_DoubtForum.git](https://github.com/OnlyBeIchi/PTTK_N5.git)
+git clone https://github.com/OnlyBeIchi/PTTK_N5.git
 
 Di chuyển vào thư mục web
 
