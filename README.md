@@ -4,16 +4,16 @@ django ==3.2.9
 
 Cách chạy:
 
-git clone https://github.com/SriAish/WebApp_DoubtForum.git
+git clone [https://github.com/SriAish/WebApp_DoubtForum.git](https://github.com/OnlyBeIchi/PTTK_N5.git)
 
-Enter the web application folder:
+Di chuyển vào thư mục web
 
-cd WebApp_DoubtForum
+cd PTTK_N5
 
-Run the web app server
+Chạy web
 
 python manage.py runserver
 
-Server is deployed at: `http://127.0.0.1:8000/`
+Server sẽ được host tại: `http://127.0.0.1:8000/`
 
-You can access the web app at the above link using any browser.
+Có thể vào server bằng bất kì trình duyệt nào.
