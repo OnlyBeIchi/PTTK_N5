@@ -1,6 +1,7 @@
 Yêu cầu cần có
-python >=3.6
-django ==3.2.9
+ python >=3.6
+
+ django ==3.2.9
 
 Cách chạy:
 
