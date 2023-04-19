@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from DoubtForum.views import *
+from django.views.static import serve
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +31,7 @@ urlpatterns = [
     path('subject_list/', subject_list, name='subject_list'),
     path('user_doubts/', user_doubts, name='user_doubts'),
     path('<int:pk>/', doubt_complete, name='doubt_complete'),
-    path('<tag>/', tagged_doubts, name='tagged_doubts')
+    path('<tag>/', tagged_doubts, name='tagged_doubts'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
