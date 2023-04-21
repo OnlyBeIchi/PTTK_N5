@@ -19,3 +19,5 @@ python manage.py runserver
 Server sẽ được host tại: `http://127.0.0.1:8000/`
 
 Có thể vào server bằng bất kì trình duyệt nào.
+
+Trang Web: https://ktn10.herokuapp.com
